@@ -58,7 +58,10 @@
         ?>
             <p class="no-posts-found">No articles or tutorials have been published yet. Check back soon!</p>
         <?php endif; ?>
+
     </div>
+    <br>
+    <?php echo wp_pagenavi() ?>
 </section>
 
 <?php get_footer(); ?>
