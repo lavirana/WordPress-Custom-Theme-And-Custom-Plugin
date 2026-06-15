@@ -3,9 +3,9 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
+    <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?> | <?php  if (is_front_page()) { echo "|"; bloginfo('description'); } ?></title>
     <!-- Dynamically linking your CSS folder from the screenshot -->
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v=1.0.2">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v=1.0.8">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

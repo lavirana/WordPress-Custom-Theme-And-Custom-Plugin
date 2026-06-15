@@ -8,11 +8,7 @@
  * Version: 1.0
  */
 ?>
-
-
-
 <?php get_header(); ?>
-
 <section class="page-hero-banner">
     <div class="hero-overlay"></div>
     <div class="hero-banner-content">
@@ -21,9 +17,6 @@
         <div class="accent-bar"></div>
     </div>
 </section>
-
-
-
 <div class="page-container">
     <main class="main-editorial-content">
         <?php 
@@ -37,28 +30,12 @@
         ?>
     </main>
     <!-- Sidebar Widget Area -->
-    <aside class="page-sidebar-widget">
-        <div class="widget-card sticky-sidebar">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="<?php echo home_url('/course'); ?>">&rarr; Popular Courses</a></li>
-                <li><a href="<?php echo home_url('/gallery'); ?>">&rarr; Student Gallery</a></li>
-                <li><a href="<?php echo home_url('/enquiry'); ?>">&rarr; Direct Admission Enquiry</a></li>
-            </ul>
-            <div class="sidebar-help-box">
-                <h4>Need Assistance?</h4>
-                <p>Speak directly with our learning coordinators today.</p>
-                <a href="<?php echo home_url('/contact'); ?>" class="sidebar-btn">Contact Us</a>
-            </div>
-        </div>
-    </aside>
+    <?php get_sidebar(); ?>
 </div>
-
 <!-- 3. Bottom Engagement CTA Section -->
 <section class="bottom-engagement-cta">
     <h2>Ready to transform your technical skills?</h2>
     <p>Join thousands of students building real-world projects today at IYA International.</p>
     <a href="<?php echo home_url('/course'); ?>" class="premium-cta-btn">View Available Batches</a>
 </section>
-
 <?php get_footer(); ?>

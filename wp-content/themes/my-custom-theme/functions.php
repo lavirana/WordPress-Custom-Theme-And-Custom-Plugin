@@ -27,10 +27,8 @@
     add_theme_support('custom-menus');
     add_theme_support('custom-post-types');
 
-
-
-
-
+    register_sidebar( array( 'name' => 'Sidebar Location', 'id' => 'sidebar'));
+    
     
 
 function my_custom_theme_enqueue_styles() {
@@ -44,6 +42,9 @@ function my_custom_theme_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'my_custom_theme_enqueue_scripts');
 
+
+
+add_theme_support('custom-background');
 
 
 /*
