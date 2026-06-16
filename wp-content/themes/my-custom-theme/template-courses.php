@@ -22,6 +22,7 @@ get_header(); ?>
 </div>
 
 
+
 <div class="course-grid-container">
     
 <?php 
