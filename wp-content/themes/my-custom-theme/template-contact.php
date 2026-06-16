@@ -6,7 +6,9 @@
  * Author URI: https://thetechinfo.net/
  * Version: 1.0
  */
-get_header(); ?>
+get_header(); 
+
+?>
 
 <section class="contact-hero">
     <h1>Get In Touch</h1>
@@ -20,12 +22,12 @@ get_header(); ?>
         <div class="info-grid">
             <div class="info-card">
                 <h4>Our Address</h4>
-                <p>IYA International Campus,<br>Near Main Technical Hub, India</p>
+                <p><?php the_field('address', 32); ?></p>
             </div>
             <div class="info-card">
                 <h4>Contact Details</h4>
-                <p><strong>Email:</strong> info@iyainternational.com</p>
-                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Email:</strong> <a href="<?php the_field('email',32); ?>"><?php the_field('email', 32); ?></a></p>
+                <p><strong>Phone:</strong><?php the_field('phone_number_1', 32); ?></p>
             </div>
         </div>
 
