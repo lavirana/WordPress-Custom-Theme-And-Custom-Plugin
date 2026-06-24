@@ -150,7 +150,20 @@ function my_posts(){
       'posts_per_page' => 5,
       'offset' => 2,
       'orderby' => 'ID',
-      'order' => 'ASC'
+      'order' => 'ASC',
+      'tax_query' => array(
+         'relation' => 'OR',
+         array(
+            'taxonomy' => 'category',
+            'field' => 'slug',
+            'terms' => array('extra')
+         ),
+         array(
+            'taxonomy' => 'category',
+            'field' => 'slug',
+            'terms' => array('php')
+         )
+         ),
    );
 
    $query = new WP_Query($args);
