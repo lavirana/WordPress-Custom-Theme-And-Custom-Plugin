@@ -174,7 +174,8 @@ function my_posts(){
 
 <?php  while($query->have_posts()){
    $query->the_post();
-   echo the_title('<h2>','</h2>') .'-'. the_content('<p>','</p>');
+   //echo '<a href= "'.get_the_permalink().'">'.the_title('<h2>','</h2>') .'</a> -'. the_content('<p>','</p>');
+   echo '<h2><a href="' . esc_url( get_the_permalink() ) . '">' . get_the_title() . '</a></h2>' . get_the_content();
 }  ?>
 
 
