@@ -151,6 +151,14 @@ function my_posts(){
       'offset' => 2,
       'orderby' => 'ID',
       'order' => 'ASC',
+      'meta_query' => array(
+         array(
+            //'key' => 'views',
+            'value' => '3',
+            'compare' => '>=',
+            'type'    => 'NUMERIC',
+         )
+      ),
       'tax_query' => array(
          'relation' => 'OR',
          array(
@@ -175,6 +183,8 @@ function my_posts(){
 <?php  while($query->have_posts()){
    $query->the_post();
    //echo '<a href= "'.get_the_permalink().'">'.the_title('<h2>','</h2>') .'</a> -'. the_content('<p>','</p>');
+   //echo get_post_meta(get_the_ID(), 'views', true);
+   //echo '<h2><a href="' . esc_url( get_the_permalink() ) . '">' . get_the_title() . '</a></h2>' . get_the_content();
    echo '<h2><a href="' . esc_url( get_the_permalink() ) . '">' . get_the_title() . '</a></h2>' . get_the_content();
 }  ?>
 
@@ -186,4 +196,54 @@ function my_posts(){
    return $html;
 }
 add_shortcode('my-posts','my_posts');
+
+
+
+function head_fun(){
+   if(is_single()){
+      global $post;
+      $views = get_post_meta($post->ID, 'views', true);
+
+      if($views == ''){
+         add_post_meta($post->ID,'views',1);
+      }else{
+         $views++;
+         update_post_meta($post->ID, 'views', $views);
+      }
+   }
+}
+
+add_action('wp_head','head_fun');
+
+
+function view_count() {
+
+   if ( ! is_single() ) {
+       return '';
+   }
+
+   $post_id = get_queried_object_id();
+
+   return 'Total views: ' . get_post_meta($post_id, 'views', true);
+}
+add_shortcode('view-count', 'view_count');
+
+function my_plugin_page_func(){
+    include 'admin/main-page.php';
+}
+
+function my_plugin_subpage_func(){
+   echo 'Sub Page';
+}
+
+function my_plugin_menu(){
+   add_menu_page('My Plugin Page', 'My Plugin Page','manage_options','my-plugin-page','my_plugin_page_func','',6);
+
+   add_submenu_page('my-plugin-page', 'My Plugin Main Page' , 'My Plugin Main Page', 'manage_options', 'my-plugin-page', 'my_plugin_page_func');
+
+   add_submenu_page('my-plugin-page', 'My Plugin Sub Page' , 'My Plugin Sub Page', 'manage_options', 'my-plugin-subpage', 'my_plugin_subpage_func');
+}
+
+add_action('admin_menu', 'my_plugin_menu');
+
 ?>
